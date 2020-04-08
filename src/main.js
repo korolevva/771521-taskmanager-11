@@ -4,6 +4,7 @@ import {createBoardTemplate} from "./components/board.js";
 import {createTaskEditTemplate} from "./components/task-edit.js";
 import {createTaskTemplate} from "./components/task.js";
 import {createLoadMoreButtonTemplate} from "./components/load-more-button.js";
+import {generateTasks} from "./mock/task.js";
 
 const TASK_COUNT = 3;
 
@@ -23,8 +24,7 @@ const boardElement = siteMainElement.querySelector(`.board`);
 
 render(taskListElement, createTaskEditTemplate(), `beforeend`);
 
-for (let i = 0; i < TASK_COUNT; i++) {
-  render(taskListElement, createTaskTemplate(), `beforeend`);
-}
+const tasks = generateTasks(TASK_COUNT);
+tasks.forEach(() => render(taskListElement, createTaskTemplate(), `beforeend`));
 
 render(boardElement, createLoadMoreButtonTemplate(), `beforeend`);
