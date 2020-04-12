@@ -38,6 +38,9 @@ for (let i = 1; i < showingTasksCount; i++) {
   render(taskListElement, createTaskTemplate(tasks[i]), `beforeend`);
 }
 
+tasks.slice(1, showingTasksCount)
+  .forEach((task) => render(taskListElement, createTaskTemplate(task), `beforeend`));
+
 render(boardElement, createLoadMoreButtonTemplate(), `beforeend`);
 
 const loadMoreButton = boardElement.querySelector(`.load-more`);
